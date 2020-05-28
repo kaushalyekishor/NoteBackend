@@ -35,13 +35,13 @@ exports.signup = async function(req, res){
          });
          await token.save(async function(err){
              if(err){
-                 return res.status(500).send({
+                  res.status(500).send({
                      message:err.message
                  });
              }
              else {
                  let subject = 'Account verification token';
-                 //let text = token.token
+                 // text = token.token
                  let text = 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + 'localhost:3000' + '\/confirmation\/' + token.token + '\n';
                  eventEmitter.emit('sendEmail', subject, user, text)
              }

@@ -6,9 +6,9 @@ dotenv.config();
 
 /// Create event handler
 var sendEmail = function (subject, user, text) {
-    return new Promise(async function(resolve, reject){
+
         try {
-            var transporter = await nodemailer.createTransport({
+            var transporter = nodemailer.createTransport({
                 service:'gmail',
                
                // secure: true,
@@ -24,18 +24,18 @@ var sendEmail = function (subject, user, text) {
                 subject: subject,
                 text: text,
             }
-            await transporter.sendMail(mailOptions, async function (error, info) {
+             transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
-                    return await resolve(error.message)
+                    return  (error.message)
                 }
                 else {
-                    return resolve('Verfication mail has been sent to ' + user.email + '.');
+                    return ('Verfication mail has been sent to ' + user.email + '.');
                 }
             });
         } catch (error) {
-            return reject(error)
+            return (error)
         }
-    })
+    
        
 }
 
