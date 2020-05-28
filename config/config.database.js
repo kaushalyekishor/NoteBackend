@@ -12,6 +12,6 @@ mongoose.connect(url,{
     
 })
 .catch(err=>{
-    console.log('Error ocuuured while conecting ' +err);
+    console.log('Error ocuuured while connecting ' +err);
     process.exit();
 })

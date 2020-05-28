@@ -9,8 +9,10 @@ exports.createUser = function(req, res){
       
         // Check for validation errors    
         var errors = req.validationErrors();
-        if (errors) { return res.status(400).send(errors); }
-      else{
-        userService.signup(req, res);
-      }
+        if (errors) {
+           return res.status(400).send(errors);
+        }
+        else{
+            userService.signup(req, res);
+        }
 }
