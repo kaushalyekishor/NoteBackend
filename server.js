@@ -7,9 +7,17 @@ const app = express();
 const database = require('./config/config.database');
 var userRoute = require('./app/routes/user.routes')
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use('/user',userRoute);
+app.use('/user', userRoute);
+
+app.post('submit', function (req, res) {
+    console.log(req.body);
+    res.render('index', {
+        title: 'Data Saved',
+        message: 'Data saved successfully.'
+    })
+})
 
 database.mongoose;
 

@@ -7,36 +7,36 @@ dotenv.config();
 /// Create event handler
 var sendEmail = function (subject, user, text) {
 
-        try {
-            var transporter = nodemailer.createTransport({
-                service:'gmail',
-               
-               // secure: true,
-                auth: {
-                    user: process.env.EMAIL,
-                    pass: process.env.PASSWORD
-                }
-            });
+    try {
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
 
-            var mailOptions =  {
-                from: process.env.EMAIL,
-                to: user.email,
-                subject: subject,
-                text: text,
+            // secure: true,
+            auth: {
+                user: process.env.EMAIL,
+                pass: process.env.PASSWORD
             }
-             transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                    return  (error.message)
-                }
-                else {
-                    return ('Verfication mail has been sent to ' + user.email + '.');
-                }
-            });
-        } catch (error) {
-            return (error)
+        });
+
+        var mailOptions = {
+            from: process.env.EMAIL,
+            to: user.email,
+            subject: subject,
+            text: text,
         }
-    
-       
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                return (error.message)
+            }
+            else {
+                return ('Verfication mail has been sent to ' + user.email + '.');
+            }
+        });
+    } catch (error) {
+        return (error)
+    }
+
+
 }
 
 /// Assign the event handler to an event
