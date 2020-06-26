@@ -20,7 +20,7 @@
     "express": "^4.17.1",
     "express-validator": "^5.3.0",
     "jsonwebtoken": "^8.5.1",
-    "jsrsasign": "^8.0.15",
+    "jsrsasign": "^8.0.19",
     "jwt-simple-verify": "0.0.3",
     "mongoose": "^5.9.16",
     "nodemailer": "^6.4.6"
